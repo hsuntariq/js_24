@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container text-center">
+        <h2 class="display-1 number">0</h2>
+        <button class="btn btn-danger"><i class="bi bi-dash"></i></button>
+        <button class="btn btn-warning"><i class="bi bi-arrow-clockwise"></i></button>
+        <button class="btn btn-success"><i class="bi bi-plus"></i></button>
+    </div>
+
+
+
+    <script>
+        let btns = document.querySelectorAll('.btn')
+        let number = document.querySelector('.number')
+        let convertedNumber = parseInt(number.innerHTML)
+        btns.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                if (index == 0) {
+
+                    convertedNumber--
+                    if (convertedNumber < 0) {
+                        convertedNumber = 0
+                        number.style.color = 'red'
+                    } else if (convertedNumber == 0) {
+                        number.style.color = 'yellow'
+
+                    }
+                    number.innerHTML = convertedNumber
+
+                } else if (index == 1) {
+                    convertedNumber = 0
+                    number.innerHTML = convertedNumber
+                    number.style.color = 'yellow'
+                } else {
+                    convertedNumber++
+                    number.innerHTML = convertedNumber
+                    if (convertedNumber > 0) {
+                        number.style.color = 'green'
+                    } else if (convertedNumber == 0) {
+                        number.style.color = 'yellow'
+
+                    }
+                }
+            })
+        })
+
+
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1></h1>
+
+
+    <script>
+
+        let body = document.querySelector('body')
+        let heading = document.querySelector('h1')
+        let colors = ['red', 'green', 'blue', 'orange', 'purple', 'yellow', 'cyan', 'black', 'wheat']
+        let count = 0
+        window.addEventListener('click', () => {
+            if (count > colors.length - 1) {
+                count = 0
+            }
+
+            if (count == 7) {
+                heading.style.color = 'white'
+            } else {
+                heading.style.color = 'black'
+            }
+
+            body.style.backgroundColor = colors[count]
+            heading.innerHTML = colors[count]
+            count++
+        })
+
+
+    </script>
+
+
+</body>
+
+</html>

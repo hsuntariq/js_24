@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <!-- Add Bootstrap & Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        .circle {
+            width: 20px;
+            height: 20px;
+            background-color: green;
+            position: absolute;
+
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="d-flex gap-2 justify-content-center mt-5">
+        <!-- Circle Button -->
+        <button class="btn btn-danger rounded-circle">
+            <i class="bi bi-circle-fill"></i>
+        </button>
+
+        <!-- Square Button -->
+        <button class="btn btn-primary">
+            <i class="bi bi-square-fill"></i>
+        </button>
+
+        <!-- Triangle Button -->
+        <button class="btn btn-success rounded">
+            <i class="bi bi-triangle-fill"></i>
+        </button>
+
+        <!-- Star Button -->
+        <button class="btn btn-warning rounded-pill">
+            <i class="bi bi-star-fill"></i>
+        </button>
+
+        <!-- Heart Button -->
+        <button class="btn btn-info rounded-circle">
+            <i class="bi bi-heart-fill"></i>
+        </button>
+
+        <!-- Diamond Button -->
+        <button class="btn btn-dark">
+            <i class="bi bi-diamond-fill"></i>
+        </button>
+    </div>
+
+
+
+
+
+
+
+    <script>
+
+        const colors = [
+            "red",
+            "blue",
+            "green",
+            "yellow",
+            "orange",
+            "purple",
+            "pink",
+            "brown",
+            "black",
+            "white",
+            "#FF5733", // bright orange-red
+            "#33FF57", // lime green
+            "#3357FF", // vivid blue
+            "#FF33A6", // hot pink
+            "#A633FF", // violet
+            "#33FFF5", // aqua blue
+            "#FFD700", // gold
+            "#FF7F50", // coral
+            "#40E0D0", // turquoise
+            "#6495ED", // cornflower blue
+            "#DC143C", // crimson
+            "#8B0000", // dark red
+            "#006400", // dark green
+            "#00008B", // dark blue
+            "#FF4500", // orange red
+            "#2E8B57", // sea green
+            "#8A2BE2", // blue violet
+            "#FF1493", // deep pink
+            "#00CED1", // dark turquoise
+            "#B22222"  // firebrick
+        ];
+
+        let count = 0
+        let body = document.querySelector('body')
+        let btns = document.querySelectorAll('.btn')
+        let shape = 'star'
+        window.addEventListener('mousemove', (e) => {
+            if (count > colors.length - 1) {
+                count = 0
+            }
+            let x = e.clientX
+            let y = e.clientY
+
+            let circle = document.createElement('div')
+            circle.classList.add('circle')
+            body.appendChild(circle)
+
+            circle.style.top = `${y}px`
+            circle.style.left = `${x}px`
+            circle.style.backgroundColor = colors[count]
+            count++
+
+
+            if (shape == 'circle') {
+                circle.style.clipPath = 'circle()'
+            } else if (shape == 'square') {
+                circle.style.clipPath = 'none'
+            } else if (shape == 'triangle') {
+                circle.style.clipPath = 'polygon(50% 0%, 0% 100%, 100% 100%)'
+            } else if (shape == 'star') {
+                circle.style.clipPath = 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'
+
+            } else if (shape == 'heart') {
+                circle.style.clipPath = 'path("M 100 180 C 10 120, 10 40, 100 60 C 190 40, 190 120, 100 180 Z")'
+            } else {
+                circle.style.clipPath = 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)'
+            }
+
+
+
+            setTimeout(() => {
+                body.removeChild(circle)
+            }, 200);
+
+
+        })
+
+
+
+
+        btns.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                if (index == 0) {
+                    shape = 'circle'
+                } else if (index == 1) {
+                    shape = 'square'
+                } else if (index == 2) {
+                    shape = 'triangle'
+                } else if (index == 3) {
+                    shape = 'star'
+                } else if (index == 4) {
+                    shape = 'heart'
+                } else {
+                    shape = 'diamond'
+
+                }
+                console.log(shape)
+            })
+        })
+
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>

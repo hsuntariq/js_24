@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <title>Event Objects</title>
+    <style>
+        .animate-keypress {
+            animation: springPress 1s cubic-bezier(.34, 1.56, .64, 1);
+        }
+
+        @keyframes springPress {
+            0% {
+                transform: scale(1);
+                box-shadow: none;
+            }
+
+            40% {
+                transform: scale(0.92);
+                box-shadow: rgba(0, 0, 0, 0.25) 0px 20px 25px,
+                    rgba(0, 0, 0, 0.12) 0px -10px 15px,
+                    rgba(0, 0, 0, 0.12) 0px 4px 6px;
+            }
+
+            60% {
+                transform: scale(1.05);
+            }
+
+            80% {
+                transform: scale(0.98);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container ">
+        <div class="row min-vh-100 justify-content-center align-items-center">
+            <div class="col-lg-3  cards">
+                <div class="card border-0">
+                    <img src="https://cdn-icons-png.flaticon.com/256/1395/1395007.png" width="100%" alt="">
+                    <h1 class="text-center">
+                        W
+                    </h1>
+                </div>
+            </div>
+            <div class="col-lg-3 cards">
+                <div class="card border-0 ">
+                    <img src="https://images.vexels.com/media/users/3/234955/isolated/lists/4e2a237d9198a5089e6b2b6f5d0485e7-drums-music-instrument-doodle.png"
+                        width="100%" alt="">
+                    <h1 class="text-center">
+                        A
+                    </h1>
+                </div>
+            </div>
+            <div class="col-lg-3 cards">
+                <div class="card border-0 ">
+                    <img src="https://cdn-icons-png.flaticon.com/256/2884/2884469.png" width="100%" alt="">
+                    <h1 class="text-center">
+                        S
+                    </h1>
+                </div>
+            </div>
+            <div class="col-lg-3 cards">
+                <div class="card border-0 ">
+                    <img src="https://cdn-icons-png.flaticon.com/256/8041/8041621.png" width="100%" alt="">
+                    <h1 class="text-center">
+                        D
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let cards = document.querySelectorAll('.cards')
+
+
+        const playDrum = (index) => {
+            cards[index].classList.add('animate-keypress')
+            setTimeout(() => {
+                cards[index].classList.remove('animate-keypress')
+            }, 1000);
+            let audio = new Audio(`./drum${index + 1}.mp3`)
+            audio.play()
+        }
+
+
+
+        window.addEventListener('keyup', (e) => {
+            console.log(e)
+            if (e.key == 'w' || e.key == 'W') {
+                playDrum(0)
+            } else if (e.key == 'a' || e.key == 'A') {
+                playDrum(1)
+            }
+            else if (e.key == 's' || e.key == 'S') {
+                playDrum(2)
+            } else if (e.key == 'D' || e.key == 'd') {
+                playDrum(3)
+
+            }
+        })
+    </script>
+</body>
+
+</html>

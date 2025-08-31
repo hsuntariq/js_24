@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        .hearts {
+            transform: translate(-50%, -50%) scale(0);
+            transition: all 0.2s ease-in;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="col-lg-3 mt-5 mx-auto">
+        <div class="card my-card position-relative shadow-lg border-0">
+            <img class="rounded-3" width="100%"
+                src="https://nationaltoday.com/wp-content/uploads/2021/11/Quaid-e-azam-day-1200x834.jpg" alt="">
+            <img style="top: 50%;left:50%;" class="position-absolute hearts " width="100px"
+                src="https://i.pinimg.com/originals/92/40/9f/92409f75241dbe1c5962c01a3a72ccf0.gif" alt="">
+        </div>
+    </div>
+
+
+
+    <script>
+        let card = document.querySelector('.my-card')
+        let hearts = document.querySelector('.hearts')
+
+
+        card.addEventListener('dblclick', () => {
+            let like = new Audio('./like.mp3')
+            like.play()
+            hearts.style.transform = 'translate(-50%, -50%) scale(1)'
+            setTimeout(() => {
+                hearts.style.transform = 'translate(-50%, -50%) scale(0)'
+
+            }, 1000)
+        })
+
+
+
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>
